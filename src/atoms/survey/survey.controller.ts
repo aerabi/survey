@@ -2,7 +2,7 @@ import { Body, Controller, Get, Path, Post, Route, SuccessResponse, Tags } from 
 import { inject, injectable } from 'inversify';
 import { SurveyService } from './survey.service';
 import { tap } from 'rxjs/operators';
-import { Survey, SurveyCreationRequest } from './data/index.models';
+import { Survey, SurveyCreationRequest } from './data/survey.models';
 
 @Route('survey')
 @Tags('Survey')

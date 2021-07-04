@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import { SurveyRepository } from './survey.repository';
-import { Survey, SurveyCreationRequest } from './data/index.models';
+import { Survey, SurveyCreationRequest } from './data/survey.models';
 import { tap } from 'rxjs/operators';
 import { flatZipMap } from '@rxjsx/rxjsx';
 

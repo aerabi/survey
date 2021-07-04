@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import { Observable } from 'rxjs';
 import { SurveyRepository } from './survey.repository';
-import { Survey, SurveyCreationRequest } from './data/index.models';
+import { Survey, SurveyCreationRequest } from './data/survey.models';
 
 @injectable()
 export class SurveyService {
