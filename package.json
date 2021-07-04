@@ -29,14 +29,16 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
+    "@rxjsx/rxjsx": "^0.1.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "inversify": "^5.0.5",
     "inversify-binding-decorators": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.1.0",
-    "rxjs-pipe-ext": "^3.0.0",
-    "tsoa": "^3.5.2"
+    "tsoa": "^3.5.2",
+    "uuid": "^8.3.2",
+    "uuid-random": "^1.3.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
