@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-api-starter",
+  "name": "survey",
   "version": "1.0.0",
   "description": "Node.js API Starter",
   "main": "dist/server.ts",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aerabi/nodejs-api-starter.git"
+    "url": "git+https://github.com/aerabi/survey.git"
   },
   "author": "Mohammad-Ali A'RÂBI",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aerabi/daily-whats-up/issues"
+    "url": "https://github.com/aerabi/survey/issues"
   },
-  "homepage": "https://github.com/aerabi/daily-whats-up#readme",
+  "homepage": "https://github.com/aerabi/survey#readme",
   "engines": {
     "node": ">=12.0.0",
     "npm": ">=6.0.0"
