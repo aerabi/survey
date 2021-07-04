@@ -1,11 +1,12 @@
 {
   "name": "survey",
   "version": "1.0.0",
-  "description": "Node.js API Starter",
+  "description": "Node.js API for anonymous surveys",
   "main": "dist/server.ts",
   "scripts": {
-    "build:all": "npm run build:routes && npm run build:ts",
+    "build:all": "npm run build:routes && npm run build:routes:spec && npm run build:ts",
     "build:routes": "tsoa routes",
+    "build:routes:spec": "tsoa spec",
     "build:ts": "tsc -p src",
     "postinstall": "npm run build:all",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
@@ -37,7 +38,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.1.0",
     "tsoa": "^3.5.2",
-    "uuid-random": "^1.3.2"
+    "uuidv4": "^6.2.10"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",

@@ -2,3 +2,4 @@
 /src/routes/routes.ts
 /dist/
 /.idea/
+/api/dist/swagger.json
