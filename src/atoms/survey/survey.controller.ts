@@ -14,7 +14,7 @@ export class SurveyController extends Controller {
 
   @SuccessResponse('201', 'Created')
   @Post('')
-  public async createMessage(@Body() surveyCreationRequest: SurveyCreationRequest): Promise<Survey> {
+  public async create(@Body() surveyCreationRequest: SurveyCreationRequest): Promise<Survey> {
     return this.service
       .create(surveyCreationRequest)
       .pipe(tap((_) => this.setStatus(201)))
