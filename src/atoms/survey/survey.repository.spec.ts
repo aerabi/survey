@@ -4,6 +4,7 @@ import { SurveyRepository } from './survey.repository';
 import { Survey, SurveyCreationRequest } from './data/survey.models';
 import { tap } from 'rxjs/operators';
 import { flatZipMap } from '@rxjsx/rxjsx';
+import { isUuid } from 'uuidv4';
 
 describe('SurveyRepository', () => {
   let repository: SurveyRepository;
@@ -21,6 +22,7 @@ describe('SurveyRepository', () => {
         tap((survey: Survey) => {
           expect(survey.questions).toEqual(request.questions);
           expect(survey.id).toBeTruthy();
+          expect(isUuid(survey.id)).toEqual(true);
         }),
       )
       .subscribe(() => done());

@@ -4,12 +4,11 @@ import { tap } from 'rxjs/operators';
 import { flatMap } from '@rxjsx/rxjsx';
 import { SurveyResponseRepository } from './survey-response.repository';
 import { SurveyResponse } from './data/survey-response.models';
-import uuid from 'uuid-random';
 
 describe('SurveyResponseRepository', () => {
   let repository: SurveyResponseRepository;
 
-  const surveyId = uuid();
+  const surveyId = 'f32dc9ae-7ca8-44ca-8f25-f258f7331c55';
 
   beforeEach(() => (repository = new SurveyResponseRepository()));
 

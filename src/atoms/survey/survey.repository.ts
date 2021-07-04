@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { Observable, of } from 'rxjs';
 import { Survey, SurveyCreationRequest } from './data/survey.models';
-import uuid from 'uuid-random';
+import { uuid } from 'uuidv4';
 
 @injectable()
 export class SurveyRepository {
