@@ -14,7 +14,13 @@ describe('SurveyResponseRepository', () => {
 
   beforeEach(() => (repository = new SurveyResponseRepository()));
 
-  beforeEach(done => fs.rm(repository['dumpPath'], done));
+  beforeEach(done => {
+    if (fs.existsSync(repository['dumpPath'])) {
+      fs.rm(repository['dumpPath'], done);
+    } else {
+      done();
+    }
+  });
 
   it('save', done => {
     const response: SurveyResponse = {
