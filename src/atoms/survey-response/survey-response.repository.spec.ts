@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { flatMap } from '@rxjsx/rxjsx';
 import { SurveyResponseRepository } from './survey-response.repository';
 import { SurveyResponse } from './data/survey-response.models';
+import * as fs from 'fs';
 
 describe('SurveyResponseRepository', () => {
   let repository: SurveyResponseRepository;
@@ -11,6 +12,8 @@ describe('SurveyResponseRepository', () => {
   const surveyId = 'f32dc9ae-7ca8-44ca-8f25-f258f7331c55';
 
   beforeEach(() => (repository = new SurveyResponseRepository()));
+
+  beforeEach(done => fs.rm(repository['dumpPath'], done));
 
   it('save', done => {
     const response: SurveyResponse = {
@@ -23,7 +26,7 @@ describe('SurveyResponseRepository', () => {
       .subscribe(() => done());
   });
 
-  it('getById', done => {
+  it('getAllById', done => {
     const response: SurveyResponse = {
       responses: [false, true, true],
     };
@@ -31,7 +34,7 @@ describe('SurveyResponseRepository', () => {
     repository
       .save(surveyId, response)
       .pipe(flatMap(_ => repository.getAllById(surveyId)))
-      .pipe(tap((responses: SurveyResponse[]) => expect(responses).toContain(response)))
+      .pipe(tap((responses: SurveyResponse[]) => expect(responses).toContainEqual(response)))
       .subscribe(() => done());
   });
 });

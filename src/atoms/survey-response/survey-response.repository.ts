@@ -1,24 +1,33 @@
 import { injectable } from 'inversify';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SurveyResponse } from './data/survey-response.models';
+import { dumpData, loadData } from '../../utils/disk';
+import { flatMap } from '@rxjsx/rxjsx';
+import { map } from 'rxjs/operators';
+
+type DataType = Record<string, SurveyResponse[]>;
 
 @injectable()
 export class SurveyResponseRepository {
-  private responses: Map<string, SurveyResponse[]>;
+  private readonly dumpPath: string;
 
   constructor() {
-    this.responses = new Map<string, SurveyResponse[]>();
+    this.dumpPath = 'survey-responses.db.json';
   }
 
   public save(surveyId: string, response: SurveyResponse): Observable<boolean> {
-    if (!this.responses.has(surveyId)) {
-      this.responses.set(surveyId, []);
-    }
-    this.responses.get(surveyId).push(response);
-    return of(true);
+    return loadData<DataType>(this.dumpPath).pipe(
+      flatMap(data => {
+        if (!data[surveyId]) {
+          data[surveyId] = [];
+        }
+        data[surveyId].push(response);
+        return dumpData(this.dumpPath, data);
+      }),
+    );
   }
 
   public getAllById(surveyId: string): Observable<SurveyResponse[]> {
-    return of(this.responses.get(surveyId));
+    return loadData<DataType>(this.dumpPath).pipe(map(data => data[surveyId]));
   }
 }
