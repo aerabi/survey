@@ -1,9 +1,10 @@
 import { injectable } from 'inversify';
 import { Observable } from 'rxjs';
-import { SurveyResponse } from './data/survey-response.models';
-import { dumpData, loadData } from '../../utils/disk';
-import { flatMap } from '@rxjsx/rxjsx';
 import { map } from 'rxjs/operators';
+
+import { dumpData, loadData } from '../../utils/disk';
+import { SurveyResponse } from './data/survey-response.models';
+import { flatMap } from '@rxjsx/rxjsx';
 
 type DataType = Record<string, SurveyResponse[]>;
 

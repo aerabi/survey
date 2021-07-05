@@ -1,10 +1,11 @@
 import { injectable } from 'inversify';
 import { Observable } from 'rxjs';
-import { Survey, SurveyCreationRequest } from './data/survey.models';
-import { uuid } from 'uuidv4';
-import { flatMap } from '@rxjsx/rxjsx';
 import { map } from 'rxjs/operators';
+import { uuid } from 'uuidv4';
+
 import { dumpData, loadData } from '../../utils/disk';
+import { Survey, SurveyCreationRequest } from './data/survey.models';
+import { flatMap } from '@rxjsx/rxjsx';
 
 @injectable()
 export class SurveyRepository {

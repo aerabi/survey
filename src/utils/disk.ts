@@ -1,5 +1,5 @@
-import { bindCallback, Observable } from 'rxjs';
 import * as fs from 'fs';
+import { Observable, bindCallback } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export function loadData<T>(path: string): Observable<T> {
