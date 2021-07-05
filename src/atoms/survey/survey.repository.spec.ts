@@ -13,7 +13,13 @@ describe('SurveyRepository', () => {
 
   beforeEach(() => (repository = new SurveyRepository()));
 
-  beforeEach(done => fs.rm(repository['dumpPath'], done));
+  beforeEach(done => {
+    if (fs.existsSync(repository['dumpPath'])) {
+      fs.rm(repository['dumpPath'], done);
+    } else {
+      done();
+    }
+  });
 
   it('save', done => {
     const request: SurveyCreationRequest = {
