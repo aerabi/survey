@@ -1,11 +1,12 @@
 import 'reflect-metadata';
 
-import { SurveyRepository } from './survey.repository';
-import { Survey, SurveyCreationRequest } from './data/survey.models';
-import { tap } from 'rxjs/operators';
-import { flatZipMap } from '@rxjsx/rxjsx';
-import { isUuid } from 'uuidv4';
 import * as fs from 'fs';
+import { tap } from 'rxjs/operators';
+import { isUuid } from 'uuidv4';
+
+import { Survey, SurveyCreationRequest } from './data/survey.models';
+import { SurveyRepository } from './survey.repository';
+import { flatZipMap } from '@rxjsx/rxjsx';
 
 describe('SurveyRepository', () => {
   let repository: SurveyRepository;

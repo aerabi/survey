@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Path, Post, Route, SuccessResponse, Tags } from 'tsoa';
 import { inject, injectable } from 'inversify';
-import { SurveyService } from './survey.service';
 import { tap } from 'rxjs/operators';
+import { Body, Controller, Get, Path, Post, Route, SuccessResponse, Tags } from 'tsoa';
+
 import { Survey, SurveyCreationRequest } from './data/survey.models';
+import { SurveyService } from './survey.service';
 
 @Route('survey')
 @Tags('Survey')

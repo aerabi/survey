@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 
-import { tap } from 'rxjs/operators';
-import { flatMap } from '@rxjsx/rxjsx';
-import { SurveyResponseRepository } from './survey-response.repository';
-import { SurveyResponse } from './data/survey-response.models';
 import * as fs from 'fs';
+import { tap } from 'rxjs/operators';
+
+import { SurveyResponse } from './data/survey-response.models';
+import { SurveyResponseRepository } from './survey-response.repository';
+import { flatMap } from '@rxjsx/rxjsx';
 
 describe('SurveyResponseRepository', () => {
   let repository: SurveyResponseRepository;
