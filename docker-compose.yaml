@@ -3,7 +3,7 @@ version: "3.7"
 services:
   nodejs:
     image: node:16
-    command: "bash -c 'cd /usr/src/app && npm start'"
+    command: "bash -c 'cd /usr/src/app && npm install && npm start'"
     ports:
       - 3000:3000
     volumes:
