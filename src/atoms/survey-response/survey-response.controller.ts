@@ -17,7 +17,7 @@ export class SurveyResponseController extends Controller {
   public async saveResponse(@Path('id') surveyId, @Body() surveyResponse: SurveyResponse): Promise<boolean> {
     return this.service
       .submit(surveyId, surveyResponse)
-      .pipe(tap((_) => this.setStatus(201)))
+      .pipe(tap(_ => this.setStatus(201)))
       .toPromise();
   }
 

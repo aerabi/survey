@@ -17,7 +17,7 @@ export class SurveyController extends Controller {
   public async create(@Body() surveyCreationRequest: SurveyCreationRequest): Promise<Survey> {
     return this.service
       .create(surveyCreationRequest)
-      .pipe(tap((_) => this.setStatus(201)))
+      .pipe(tap(_ => this.setStatus(201)))
       .toPromise();
   }
 

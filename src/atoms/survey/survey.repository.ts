@@ -18,14 +18,14 @@ export class SurveyRepository {
     const id = uuid();
     const survey: Survey = { ...request, id };
     return this.loadData().pipe(
-      flatMap((data) => {
+      flatMap(data => {
         return this.dumpData({ ...data, [id]: survey }).pipe(map(() => survey));
       }),
     );
   }
 
   public getById(id: string): Observable<Survey> {
-    return this.loadData().pipe(map((surveys) => surveys[id]));
+    return this.loadData().pipe(map(surveys => surveys[id]));
   }
 
   private loadData(): Observable<Record<string, Survey>> {
@@ -41,6 +41,6 @@ export class SurveyRepository {
   }
 
   private dumpData(data: Record<string, Survey>): Observable<boolean> {
-    return bindCallback(fs.writeFile)(this.dumpPath, JSON.stringify(data)).pipe(map((_) => true));
+    return bindCallback(fs.writeFile)(this.dumpPath, JSON.stringify(data)).pipe(map(_ => true));
   }
 }
