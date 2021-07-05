@@ -1,6 +1,15 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "experimentalDecorators": true
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es5",
+    "lib": [
+      "es2019",
+      "dom"
+    ]
   }
 }
