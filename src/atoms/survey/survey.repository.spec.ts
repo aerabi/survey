@@ -5,11 +5,14 @@ import { Survey, SurveyCreationRequest } from './data/survey.models';
 import { tap } from 'rxjs/operators';
 import { flatZipMap } from '@rxjsx/rxjsx';
 import { isUuid } from 'uuidv4';
+import * as fs from 'fs';
 
 describe('SurveyRepository', () => {
   let repository: SurveyRepository;
 
   beforeEach(() => (repository = new SurveyRepository()));
+
+  beforeEach(done => fs.rm(repository['dumpPath'], done));
 
   it('save', done => {
     const request: SurveyCreationRequest = {
