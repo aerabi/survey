@@ -12,7 +12,7 @@ describe('SurveyResponseRepository', () => {
 
   beforeEach(() => (repository = new SurveyResponseRepository()));
 
-  it('save', (done) => {
+  it('save', done => {
     const response: SurveyResponse = {
       responses: [false],
     };
@@ -23,14 +23,14 @@ describe('SurveyResponseRepository', () => {
       .subscribe(() => done());
   });
 
-  it('getById', (done) => {
+  it('getById', done => {
     const response: SurveyResponse = {
       responses: [false, true, true],
     };
 
     repository
       .save(surveyId, response)
-      .pipe(flatMap((_) => repository.getAllById(surveyId)))
+      .pipe(flatMap(_ => repository.getAllById(surveyId)))
       .pipe(tap((responses: SurveyResponse[]) => expect(responses).toContain(response)))
       .subscribe(() => done());
   });

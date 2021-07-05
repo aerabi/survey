@@ -11,7 +11,7 @@ describe('SurveyRepository', () => {
 
   beforeEach(() => (repository = new SurveyRepository()));
 
-  it('save', (done) => {
+  it('save', done => {
     const request: SurveyCreationRequest = {
       questions: [{ text: 'Is it the first unit test?' }],
     };
@@ -28,7 +28,7 @@ describe('SurveyRepository', () => {
       .subscribe(() => done());
   });
 
-  it('getById', (done) => {
+  it('getById', done => {
     const request: SurveyCreationRequest = {
       questions: [{ text: 'Is it loaded again?' }],
     };
