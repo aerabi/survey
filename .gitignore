@@ -3,3 +3,5 @@
 /dist/
 /.idea/
 /api/dist/swagger.json
+
+*.db.json
