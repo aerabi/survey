@@ -3,13 +3,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { dumpData, loadData } from '../../utils/disk';
-import { SurveyResponse } from './data/survey-response.models';
+import { ISurveyResponseRepository, SurveyResponse } from './data/survey-response.models';
 import { flatMap } from '@rxjsx/rxjsx';
 
 type DataType = Record<string, SurveyResponse[]>;
 
 @injectable()
-export class SurveyResponseRepository {
+export class SurveyResponseRepository implements ISurveyResponseRepository {
   private readonly dumpPath: string;
 
   constructor() {
