@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import * as fs from 'fs';
 import { tap } from 'rxjs/operators';
 
-import { SurveyResponse } from './data/survey-response.models';
+import { MultipleChoiceSurveyResponse, SurveyResponse, YesNoSurveyResponse } from './data/survey-response.models';
 import { SurveyResponseRepository } from './survey-response.repository';
 import { flatMap } from '@rxjsx/rxjsx';
 
@@ -23,13 +23,24 @@ describe('SurveyResponseRepository', () => {
   });
 
   it('save', done => {
-    const response: SurveyResponse = {
+    const response: YesNoSurveyResponse = {
       responses: [false],
     };
 
     repository
       .save(surveyId, response)
       .pipe(tap((success: boolean) => expect(success).toEqual(true)))
+      .subscribe(() => done());
+  });
+
+  it('save multi-option response', done => {
+    const response: MultipleChoiceSurveyResponse = {
+      responses: ['Darkseid'],
+    };
+
+    repository
+      .save(surveyId, response)
+      .pipe(tap(success => expect(success).toEqual(true)))
       .subscribe(() => done());
   });
 
@@ -40,7 +51,7 @@ describe('SurveyResponseRepository', () => {
 
     repository
       .save(surveyId, response)
-      .pipe(flatMap(_ => repository.getAllById(surveyId)))
+      .pipe(flatMap(() => repository.getAllById(surveyId)))
       .pipe(tap((responses: SurveyResponse[]) => expect(responses).toContainEqual(response)))
       .subscribe(() => done());
   });

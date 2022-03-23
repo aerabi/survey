@@ -21,7 +21,7 @@ describe('SurveyRepository', () => {
     }
   });
 
-  it('save', done => {
+  it('save yes/no survey', done => {
     const request: SurveyCreationRequest = {
       questions: [{ text: 'Is it the first unit test?' }],
     };
@@ -33,6 +33,27 @@ describe('SurveyRepository', () => {
           expect(survey.questions).toEqual(request.questions);
           expect(survey.id).toBeTruthy();
           expect(isUuid(survey.id)).toEqual(true);
+        }),
+      )
+      .subscribe(() => done());
+  });
+
+  it('save multi-option survey', done => {
+    const request: SurveyCreationRequest = {
+      questions: [
+        {
+          text: 'Who is your favorite villain?',
+          options: ['Black Manta', 'DeathStroke', 'Darkseid', 'Batman who Laughs'],
+        },
+      ],
+    };
+
+    repository
+      .save(request)
+      .pipe(
+        tap((survey: Survey) => {
+          expect(survey.questions).toEqual(request.questions);
+          expect(survey.id).toBeTruthy();
         }),
       )
       .subscribe(() => done());
