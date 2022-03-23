@@ -1,5 +1,6 @@
 export interface Question {
   text: string;
+  options?: string[];
 }
 
 export interface SurveyBase {
